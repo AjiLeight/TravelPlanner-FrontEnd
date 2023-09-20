@@ -1,7 +1,5 @@
 pipeline{
-    agent {
-            docker { image 'node:18.17.1-alpine3.18' }
-    }
+    agent any
     options{
         buildDiscarder(logRotator(numToKeepStr: '5', daysToKeepStr: '5'))
         timestamps()
@@ -9,7 +7,7 @@ pipeline{
     environment{
 
         registry = "amrameen769/travel_planner_frontend"
-        registryCredential = 'docker-hub'
+        registryCredential = 'dockerhub'
     }
 
     stages{
