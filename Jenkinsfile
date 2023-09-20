@@ -6,7 +6,7 @@ pipeline{
     }
     environment{
 
-        registry = "amrameen769/travel_planner_frontend:dev"
+        registry = "amrameen769/travel_planner_frontend"
         registryCredential = 'docker-hub'
     }
 
