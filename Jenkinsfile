@@ -5,25 +5,26 @@ pipeline{
         timestamps()
     }
     environment{
-        registry = "amrameen769/travel_planner_frontend"
+
+        registry = "amrameen769/travel_planner_frontend:dev"
         registryCredential = 'docker-hub'
     }
 
-    stages {
-        stage('Building image') {
-            steps{
-                script {
-                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                }
-            }
+    stages{
+       stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
-    stage('Deploy Image') {
-        steps{
-            script {
-                docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push()
-                }
-            }
+      }
+    }
+       stage('Deploy Image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
         }
+      }
     }
 }
