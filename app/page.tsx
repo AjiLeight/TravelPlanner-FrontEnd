@@ -5,6 +5,11 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24 justify-center">
       <div className={"h-full w-full flex flex-col items-center gap-6"}>
+          <div className={"w-full flex justify-center"}>
+              <div className={"relative flex w-[350px] h-[350px]"}>
+                  <Image src={"/globe.svg"} alt={"logo"} fill className={"object-center"}/>
+              </div>
+          </div>
         <div className={"flex flex-col items-center"}>
             <div className={"relative flex w-[400px] h-[318px]"}>
                 <Image src={"/logo-up.svg"} alt={"logo"} fill className={"object-center"}/>
