@@ -1,13 +1,21 @@
 import React from 'react';
 import SignInForm from "@/components/Auth/SignInForm";
 import Link from "next/link";
+import {getServerSession} from "next-auth";
+import {redirect} from "next/navigation";
+import authOptions from "@/config/nextAuthConfig";
 
 type SignInPageProps = {
     params: {},
     searchParams: { [key: string]: string | string[] | undefined }
 }
 
-const SignInPage = (props: SignInPageProps) => {
+const SignInPage = async (props: SignInPageProps) => {
+    const session = await getServerSession(authOptions);
+    console.log(session)
+    if (session?.user.accessToken) {
+        redirect("/dashboard")
+    }
     return (
         <div
             className={"h-screen flex justify-center items-center bg-gradient-to-br from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%"}>
