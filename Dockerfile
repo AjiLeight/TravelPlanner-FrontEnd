@@ -12,4 +12,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD npm run start
+CMD npx next start -H 192.168.29.225
