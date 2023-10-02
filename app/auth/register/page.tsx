@@ -2,7 +2,7 @@ import React from 'react';
 import Link from "next/link";
 import SignUpForm from "@/components/Auth/SignUpForm";
 
-const RegisterPage = () => {
+const RegisterPage = async () => {
     return (
         <div
             className={"h-screen flex justify-center items-center bg-gradient-to-br from-amber-500 from-10% via-yellow-400 via-30% to-orange-500 to-90%"}>
