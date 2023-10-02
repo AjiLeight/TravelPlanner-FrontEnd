@@ -1,5 +1,6 @@
 import {NextAuthOptions} from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials'
+import axios from "@/utils/axios";
 
 const authOptions: NextAuthOptions = {
     providers: [
@@ -16,9 +17,13 @@ const authOptions: NextAuthOptions = {
             },
             async authorize(credentials, req) {
                 // Add logic here to look up the user from the credentials supplied
-                const user = {id: "1", name: "J Smith", email: "jsmith@example.com"}
 
-                console.log(credentials)
+                const res = await axios.post("/api/v1/auth/authenticate", {
+                    email: credentials?.username,
+                    password: credentials?.password
+                })
+
+                const user = res.data
 
                 if (user) {
                     // Any object returned will be saved in `user` property of the JWT
@@ -34,6 +39,18 @@ const authOptions: NextAuthOptions = {
     ],
     pages: {
         signIn: "/auth/signIn"
+    },
+    session: {
+        strategy: "jwt"
+    },
+    callbacks: {
+        async jwt({token, user}) {
+            return {...token, ...user}
+        },
+        async session({session, token, user}) {
+            session.user = token as any;
+            return session
+        }
     }
 }
 
