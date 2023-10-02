@@ -11,7 +11,8 @@ const SignInForm = () => {
     const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         await signIn("credentials", {
-            ...credentials
+            ...credentials,
+            callbackUrl: "/dashboard"
         })
     }
 
