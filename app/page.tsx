@@ -1,7 +1,8 @@
 import Image from "next/image";
 import GoToSignInButton from "@/components/Auth/GoToSignInButton";
 
-export default function Home() {
+export default async function Home() {
+
     return (
         <main className={'flex items-center justify-center min-w-screen min-h-screen'}>
             <div className={"h-screen justify-center max-w-screen-xl w-full gap-6 flex flex-col items-center"}>
