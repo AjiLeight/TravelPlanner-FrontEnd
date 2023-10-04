@@ -4,6 +4,7 @@ import Link from "next/link";
 import {getServerSession} from "next-auth";
 import {redirect} from "next/navigation";
 import authOptions from "@/config/nextAuthConfig";
+import {getAuthSessionUser} from "@/utils/authUtils";
 
 type SignInPageProps = {
     params: {},
@@ -11,9 +12,8 @@ type SignInPageProps = {
 }
 
 const SignInPage = async (props: SignInPageProps) => {
-    const session = await getServerSession(authOptions);
-    console.log(session)
-    if (session?.user.accessToken) {
+    const session = await getAuthSessionUser();
+    if (session?.accessToken) {
         redirect("/dashboard")
     }
     return (

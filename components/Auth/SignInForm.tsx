@@ -5,7 +5,7 @@ import {signIn} from "next-auth/react";
 
 const SignInForm = () => {
     const [credentials, setCredentials] = useState({
-        username: '',
+        email: '',
         password: ''
     })
     const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,11 +27,11 @@ const SignInForm = () => {
             <form onSubmit={handleSignIn} className={"flex flex-col gap-4 items-center"} autoComplete={"off"}>
                 <div className={"bg-[#e6e6e6] h-[40px] w-full flex items-start border rounded-xl px-[15px]"}>
                     <input
-                        id={'username'} type="text"
-                        name={"username"}
-                        value={credentials.username}
+                        id={'email'} type="text"
+                        name={"email"}
+                        value={credentials.email}
                         onChange={handleChange}
-                        placeholder={"Username"}
+                        placeholder={"Email"}
                         className={"bg-transparent border-none outline-none w-full h-full"}
                     />
                 </div>
