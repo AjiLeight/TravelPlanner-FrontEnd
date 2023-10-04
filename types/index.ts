@@ -3,3 +3,9 @@ export interface listObj {
     name: string
     value: string
 }
+
+export type userData = {
+    email: string
+    password: string
+    role: string
+}
