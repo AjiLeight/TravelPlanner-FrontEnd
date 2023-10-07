@@ -10,7 +10,9 @@ export async function registerUser(userData: userData) {
         const res = await axios.post("/api/v1/auth/register", userData)
         return res.data
     } catch (error: any) {
-        return error.response.data
+        return {
+            error: error.response.data
+        }
     }
 }
 

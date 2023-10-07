@@ -31,7 +31,7 @@ const SignUpForm = () => {
             })
         } else {
             const res = await registerUser(credentials)
-            if (res?.message) {
+            if (res?.error?.message) {
                 setError({
                     message: res.message
                 })
